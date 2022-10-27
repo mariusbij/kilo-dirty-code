@@ -1,0 +1,18 @@
+{
+    "name": "dariuskasperavicius/clean",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kasperavicius",
+            "email": "darius.kasperavicius@kilo.health"
+        }
+    ],
+    "require": {
+        "webmozart/assert": "^1.11",
+        "illuminate/database": "^9.37"
+    }
+}
