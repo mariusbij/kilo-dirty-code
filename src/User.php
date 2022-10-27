@@ -6,6 +6,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * This class is example of dirty code
+ */
 class User extends Model
 {
     private $easyTokenReminderGenerator;
