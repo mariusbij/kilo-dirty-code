@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
+    private $user;
+
     private $easyTokenReminderGenerator;
 
     public $email;
@@ -46,17 +48,17 @@ class User extends Model
 
     public function getAddressString() {
         $address  = [
-            $this->p->city,
-            $this->p->street,
-            $this->p->house,
-            $this->p->apartment,
+            $this->user->city,
+            $this->user->street,
+            $this->user->house,
+            $this->user->apartment,
         ];
 
         return implode(" ", $address);
     }
 
     public function getFullName() {
-        return $this->p->second_name . ' ' . $this->p->first_name;
+        return $this->user->second_name . ' ' . $this->user->first_name;
     }
 
     public function addBalance($sum) {
@@ -66,21 +68,6 @@ class User extends Model
     public function getBalance() {
         return $this->getBalance()->sum;
     }
-
-
-    public function getBillingStatistics() {
-        return BillingHistory::where('user_id', $this->id)
-            ->groupBy('created_at')
-            ->get();
-    }
-
-    public function getPaymentsStatistics() {
-        return Payments::where('user_id', $this->id)
-            ->groupBy('created_at')
-            ->get();
-    }
-
-    private $p;
 
     private function createPasswordToken($email)
     {
